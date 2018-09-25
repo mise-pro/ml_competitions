@@ -1,2 +1,2 @@
 # ml_competitions
-just competitons
+just competitons and notebooks
