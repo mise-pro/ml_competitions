@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV LANG=C.UTF-8
 
@@ -16,7 +16,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Python 3.6
-RUN add-apt-repository -y ppa:jonathonf/python-3.6 && \
+RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         python3-pip \
@@ -24,8 +24,6 @@ RUN add-apt-repository -y ppa:jonathonf/python-3.6 && \
         python3.6 \
         python3.6-dev \
         python3.6-venv && \
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1 && \
-    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2 && \
     pip3 install --no-cache-dir --upgrade pip && \
     rm -rf /var/lib/apt/lists/*
 
@@ -33,4 +31,9 @@ RUN add-apt-repository -y ppa:jonathonf/python-3.6 && \
 RUN pip3 install --no-cache-dir --upgrade \
     pandas \
     jupyter \
-    lightgbm
+    lightgbm \
+    catboost \
+    xgboost \
+    hyperopt \
+    Boruta \
+    category_encoders
